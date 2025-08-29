@@ -1,0 +1,25 @@
+{
+  "name": "@thumbmarkjs/integrations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Framework integrations for ThumbmarkJS",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "clean": "npm run clean --workspaces"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thumbmarkjs/integrations.git"
+  },
+  "author": "ThumbmarkJS",
+  "license": "MIT"
+}

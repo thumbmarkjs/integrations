@@ -1,0 +1,44 @@
+{
+  "name": "@thumbmarkjs/vue",
+  "version": "1.0.0",
+  "description": "Vue integration for ThumbmarkJS",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.vue",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@thumbmarkjs/thumbmarkjs": "^1.0.0",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "vue": "^3.0.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-dts": "^6.0.0",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thumbmarkjs/integrations.git",
+    "directory": "packages/vue"
+  },
+  "keywords": [
+    "thumbmarkjs",
+    "vue",
+    "fingerprinting",
+    "browser",
+    "tracking"
+  ],
+  "author": "ThumbmarkJS",
+  "license": "MIT"
+}
