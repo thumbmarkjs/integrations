@@ -1,6 +1,14 @@
 <template>
   <div>
     <h1>ThumbmarkJS Vue Example</h1>
+    <div style="
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+      font-family: monospace;
+    ">
+      Using @thumbmarkjs/vue v{{ version }} • @thumbmarkjs/thumbmarkjs v{{ getVersion() }}
+    </div>
     <div style="padding: 20px;">
       <div v-if="isLoading" style="padding: 20px;">
         🔄 Generating thumbmark...
@@ -33,7 +41,8 @@
 </template>
 
 <script setup>
-import { useThumbmark } from '@thumbmarkjs/vue';
+import { useThumbmark, version } from '@thumbmarkjs/vue';
+import { getVersion } from '@thumbmarkjs/thumbmarkjs';
 
 const { thumbmark, isLoading, error, reload } = useThumbmark();
 </script>

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Thumbmark } from '@thumbmarkjs/thumbmarkjs';
+import { Thumbmark, getVersion } from '@thumbmarkjs/thumbmarkjs';
 import { ThumbmarkContext } from './ThumbmarkContext';
 import { ThumbmarkProviderProps } from './types';
 
@@ -9,6 +9,11 @@ export const ThumbmarkProvider: React.FC<ThumbmarkProviderProps> = ({
   options = {},
 }) => {
   const thumbmarkInstance = useMemo(() => {
+    // Only create Thumbmark instance on client-side
+    if (typeof window === 'undefined') {
+      return null;
+    }
+    
     const config = apiKey ? { ...options, api_key: apiKey } : options;
     return new Thumbmark(config);
   }, [apiKey, options]);
@@ -26,3 +31,5 @@ export const ThumbmarkProvider: React.FC<ThumbmarkProviderProps> = ({
     </ThumbmarkContext.Provider>
   );
 };
+
+export { getVersion as getThumbmarkVersion };

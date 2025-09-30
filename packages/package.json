@@ -4,13 +4,20 @@
   "private": true,
   "description": "Framework integrations for ThumbmarkJS",
   "workspaces": [
-    "packages/*"
+    "react",
+    "vue"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
+    "test": "npm run test --workspaces", 
     "lint": "npm run lint --workspaces",
-    "clean": "npm run clean --workspaces"
+    "clean": "npm run clean --workspaces",
+    "dev:setup": "./scripts/dev-setup.sh",
+    "dev:link": "./scripts/link-packages.sh",
+    "dev:start": "./scripts/start-examples.sh",
+    "dev:react": "cd examples/react-app && npm start",
+    "dev:vue": "cd examples/vue-app && npm run dev",
+    "example:install": "cd examples/react-app && npm install && cd ../vue-app && npm install"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

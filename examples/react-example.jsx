@@ -1,5 +1,6 @@
 import React from 'react';
-import { ThumbmarkProvider, useThumbmark } from '@thumbmarkjs/react';
+import { ThumbmarkProvider, useThumbmark, version } from '@thumbmarkjs/react';
+import { getVersion } from '@thumbmarkjs/thumbmarkjs';
 
 // Example component using the thumbmark hook
 function ThumbmarkDisplay() {
@@ -56,6 +57,14 @@ function App() {
     >
       <div>
         <h1>ThumbmarkJS React Example</h1>
+        <div style={{
+          fontSize: '14px',
+          color: '#666',
+          marginBottom: '20px',
+          fontFamily: 'monospace'
+        }}>
+          Using @thumbmarkjs/react v{version} • @thumbmarkjs/thumbmarkjs v{getVersion()}
+        </div>
         <ThumbmarkDisplay />
       </div>
     </ThumbmarkProvider>

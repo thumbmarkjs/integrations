@@ -1,0 +1,16 @@
+{
+  "name": "@thumbmarkjs/examples",
+  "version": "1.0.0", 
+  "private": true,
+  "description": "Example applications for ThumbmarkJS integrations",
+  "workspaces": [
+    "react-app",
+    "vue-app"
+  ],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "start:react": "cd react-app && npm start",
+    "start:vue": "cd vue-app && npm run dev", 
+    "build:all": "npm run build --workspaces"
+  }
+}

@@ -5,10 +5,16 @@ import { UseThumbmarkResult } from './types';
 export const useThumbmark = (): UseThumbmarkResult => {
   const { thumbmarkInstance } = useContext(ThumbmarkContext);
   const [thumbmark, setThumbmark] = useState<string | null>(null);
+  const [visitorId, setVisitorId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const generateThumbmark = useCallback(async () => {
+    // Only run on client-side
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     if (!thumbmarkInstance) {
       setError(new Error('ThumbmarkProvider not found. Make sure to wrap your component with ThumbmarkProvider.'));
       return;
@@ -20,6 +26,7 @@ export const useThumbmark = (): UseThumbmarkResult => {
     try {
       const result = await thumbmarkInstance.get();
       setThumbmark(result.thumbmark);
+      setVisitorId(result.visitorId || null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error occurred'));
     } finally {
@@ -37,6 +44,7 @@ export const useThumbmark = (): UseThumbmarkResult => {
 
   return {
     thumbmark,
+    visitorId,
     isLoading,
     error,
     reload,

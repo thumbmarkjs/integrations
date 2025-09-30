@@ -9,6 +9,7 @@ export interface ThumbmarkProviderProps {
 
 export interface UseThumbmarkResult {
   thumbmark: string | null;
+  visitorId: string | null;
   isLoading: boolean;
   error: Error | null;
   reload: () => Promise<void>;
