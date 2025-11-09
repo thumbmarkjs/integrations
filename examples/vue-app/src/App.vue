@@ -2,7 +2,7 @@
 import { version, getThumbmarkVersion, useThumbmark } from '@thumbmarkjs/vue'
 import { getVersion } from '@thumbmarkjs/thumbmarkjs'
 
-const { thumbmark, visitorId, isLoading, error, reload } = useThumbmark()
+const { thumbmark, visitorId, isLoading, error, reload, components, info } = useThumbmark()
 
 const validApiKey = import.meta.env.VITE_THUMBMARK_API_KEY
 const invalidApiKey = import.meta.env.VITE_INVALID_THUMBMARK_API_KEY
@@ -31,6 +31,8 @@ const invalidApiKey = import.meta.env.VITE_INVALID_THUMBMARK_API_KEY
           <div v-else-if="thumbmark" class="success">
             <div><strong>✅ Visitor ID:</strong> {{ visitorId || 'Not available' }}</div>
             <div><strong>✅ Thumbmark:</strong> {{ thumbmark }}</div>
+            <div v-if="components"><strong>📦 Components keys:</strong> {{ Object.keys(components).join(', ') }}</div>
+            <div v-if="info"><strong>ℹ️ Info keys:</strong> {{ Object.keys(info).join(', ') }}</div>
           </div>
           <div v-else class="waiting">⏳ Waiting for thumbmark...</div>
 

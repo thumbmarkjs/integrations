@@ -10,6 +10,8 @@ interface ThumbmarkPluginOptions {
 interface UseThumbmarkResult {
   thumbmark: Ref<string | null>
   visitorId: Ref<string | null>
+  components: Ref<any>
+  info: Ref<any>
   isLoading: Ref<boolean>
   error: Ref<Error | null>
   reload: () => Promise<void>
@@ -77,12 +79,14 @@ export function useThumbmark(): UseThumbmarkResult {
   const thumbmarkInstance = inject(THUMBMARK_INSTANCE)
   const thumbmark = ref<string | null>(null)
   const visitorId = ref<string | null>(null)
+  const components = ref<any>(null)
+  const info = ref<any>(null)
   const isLoading = ref(false)
   const error = ref<Error | null>(null)
 
   if (!thumbmarkInstance) {
     error.value = new Error('ThumbmarkJS plugin not installed. Use app.use(createThumbmarkPlugin()).')
-    return { thumbmark, visitorId, isLoading, error, reload: async () => {} }
+    return { thumbmark, visitorId, components, info, isLoading, error, reload: async () => {} }
   }
 
   const getThumbmark = async () => {
@@ -95,6 +99,8 @@ export function useThumbmark(): UseThumbmarkResult {
       const result = await thumbmarkInstance.get()
       thumbmark.value = result.thumbmark
       visitorId.value = result.visitorId || null
+      components.value = result.components || null
+      info.value = result.info || null
     } catch (err) {
       error.value = err instanceof Error ? err : new Error('Unknown error occurred')
     } finally {
@@ -107,6 +113,8 @@ export function useThumbmark(): UseThumbmarkResult {
   return {
     thumbmark,
     visitorId,
+    components,
+    info,
     isLoading,
     error,
     reload: getThumbmark,
