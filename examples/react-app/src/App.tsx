@@ -5,35 +5,63 @@ import { getVersion } from '@thumbmarkjs/thumbmarkjs';
 
 // Test Component 1: No options (basic usage)
 function BasicThumbmarkTest() {
-  const { thumbmark, isLoading, error } = useThumbmark();
+  const { thumbmark, isLoading, error, components, info } = useThumbmark();
 
   return (
     <div className="test-section">
       <h2>Test 1: Basic Usage (No Options)</h2>
       {isLoading && <div data-testid="basic-loading">🔄 Loading...</div>}
       {error && <div data-testid="basic-error" className="error">❌ Error: {error.message}</div>}
-      {thumbmark && <div data-testid="basic-thumbmark" className="thumbmark">✅ Thumbmark: {thumbmark}</div>}
+      {thumbmark && (
+        <div>
+          <div data-testid="basic-thumbmark" className="thumbmark">✅ Thumbmark: {thumbmark}</div>
+          {components && (
+            <div data-testid="basic-components">
+              📦 Components keys: {Object.keys(components).join(', ')}
+            </div>
+          )}
+          {info && (
+            <div data-testid="basic-info">
+              ℹ️ Info keys: {Object.keys(info).join(', ')}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
 // Test Component 2: With API Key
 function ApiKeyThumbmarkTest() {
-  const { thumbmark, isLoading, error } = useThumbmark();
+  const { thumbmark, isLoading, error, components, info } = useThumbmark();
 
   return (
     <div className="test-section">
       <h2>Test 2: With API Key</h2>
       {isLoading && <div data-testid="apikey-loading">🔄 Loading...</div>}
       {error && <div data-testid="apikey-error" className="error">❌ Error: {error.message}</div>}
-      {thumbmark && <div data-testid="apikey-thumbmark" className="thumbmark">✅ Thumbmark: {thumbmark}</div>}
+      {thumbmark && (
+        <div>
+          <div data-testid="apikey-thumbmark" className="thumbmark">✅ Thumbmark: {thumbmark}</div>
+          {components && (
+            <div data-testid="apikey-components">
+              📦 Components keys: {Object.keys(components).join(', ')}
+            </div>
+          )}
+          {info && (
+            <div data-testid="apikey-info">
+              ℹ️ Info keys: {Object.keys(info).join(', ')}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
 // Test Component 3: With Options
 function OptionsThumbmarkTest() {
-  const { thumbmark, isLoading, error, reload } = useThumbmark();
+  const { thumbmark, isLoading, error, reload, components, info } = useThumbmark();
 
   return (
     <div className="test-section">
@@ -43,6 +71,16 @@ function OptionsThumbmarkTest() {
       {thumbmark && (
         <div>
           <div data-testid="options-thumbmark" className="thumbmark">✅ Thumbmark: {thumbmark}</div>
+          {components && (
+            <div data-testid="options-components">
+              📦 Components keys: {Object.keys(components).join(', ')}
+            </div>
+          )}
+          {info && (
+            <div data-testid="options-info">
+              ℹ️ Info keys: {Object.keys(info).join(', ')}
+            </div>
+          )}
           <button data-testid="options-reload" onClick={reload}>🔄 Reload</button>
         </div>
       )}

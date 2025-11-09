@@ -12,5 +12,7 @@ export interface UseThumbmarkResult {
   visitorId: string | null;
   isLoading: boolean;
   error: Error | null;
+  components: any;
+  info: any;
   reload: () => Promise<void>;
 }

@@ -6,6 +6,8 @@ export const useThumbmark = (): UseThumbmarkResult => {
   const { thumbmarkInstance } = useContext(ThumbmarkContext);
   const [thumbmark, setThumbmark] = useState<string | null>(null);
   const [visitorId, setVisitorId] = useState<string | null>(null);
+  const [components, setComponents] = useState<any>(null);
+  const [info, setInfo] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -27,6 +29,8 @@ export const useThumbmark = (): UseThumbmarkResult => {
       const result = await thumbmarkInstance.get();
       setThumbmark(result.thumbmark);
       setVisitorId(result.visitorId || null);
+      setComponents(result.components || null);
+      setInfo(result.info || null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error occurred'));
     } finally {
@@ -47,6 +51,8 @@ export const useThumbmark = (): UseThumbmarkResult => {
     visitorId,
     isLoading,
     error,
+    components,
+    info,
     reload,
   };
 };

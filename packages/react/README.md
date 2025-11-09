@@ -2,6 +2,8 @@
 
 React integration for ThumbmarkJS - browser fingerprinting library.
 
+GitHub repository is [thumbmarkjs/integrations](https://github.com/thumbmarkjs/integrations)
+
 ## Installation
 
 ```bash
