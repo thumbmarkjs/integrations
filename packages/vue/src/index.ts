@@ -1,5 +1,5 @@
 import { App, inject, onMounted, ref, type InjectionKey, type Ref } from 'vue'
-import { Thumbmark } from '@thumbmarkjs/thumbmarkjs'
+import { Thumbmark, type ThumbmarkResponse } from '@thumbmarkjs/thumbmarkjs'
 
 // Types
 interface ThumbmarkPluginOptions {
@@ -10,8 +10,8 @@ interface ThumbmarkPluginOptions {
 interface UseThumbmarkResult {
   thumbmark: Ref<string | null>
   visitorId: Ref<string | null>
-  components: Ref<any>
-  info: Ref<any>
+  components: Ref<ThumbmarkResponse['components'] | null>
+  info: Ref<ThumbmarkResponse['info'] | null>
   isLoading: Ref<boolean>
   error: Ref<Error | null>
   reload: () => Promise<void>
@@ -79,8 +79,8 @@ export function useThumbmark(): UseThumbmarkResult {
   const thumbmarkInstance = inject(THUMBMARK_INSTANCE)
   const thumbmark = ref<string | null>(null)
   const visitorId = ref<string | null>(null)
-  const components = ref<any>(null)
-  const info = ref<any>(null)
+  const components = ref<ThumbmarkResponse['components'] | null>(null)
+  const info = ref<ThumbmarkResponse['info'] | null>(null)
   const isLoading = ref(false)
   const error = ref<Error | null>(null)
 

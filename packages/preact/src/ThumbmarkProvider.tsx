@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'preact/hooks';
 import { Thumbmark, getVersion } from '@thumbmarkjs/thumbmarkjs';
 import { ThumbmarkContext } from './ThumbmarkContext';
 import { ThumbmarkProviderProps } from './types';
 
-export const ThumbmarkProvider: React.FC<ThumbmarkProviderProps> = ({
+export function ThumbmarkProvider({
   children,
   apiKey,
   options = {},
-}) => {
+}: ThumbmarkProviderProps) {
   const optionsKey = JSON.stringify(options);
 
   const thumbmarkInstance = useMemo(() => {
@@ -33,6 +33,6 @@ export const ThumbmarkProvider: React.FC<ThumbmarkProviderProps> = ({
       {children}
     </ThumbmarkContext.Provider>
   );
-};
+}
 
 export { getVersion as getThumbmarkVersion };

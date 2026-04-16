@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { ComponentChildren } from 'preact';
 import { Thumbmark, ThumbmarkResponse } from '@thumbmarkjs/thumbmarkjs';
 
 export interface ThumbmarkProviderProps {
-  children: ReactNode;
+  children: ComponentChildren;
   apiKey?: string;
   options?: ConstructorParameters<typeof Thumbmark>[0];
 }

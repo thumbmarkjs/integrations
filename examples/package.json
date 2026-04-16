@@ -5,12 +5,16 @@
   "description": "Example applications for ThumbmarkJS integrations",
   "workspaces": [
     "react-app",
-    "vue-app"
+    "vue-app",
+    "preact-app",
+    "angular-app"
   ],
   "scripts": {
     "install:all": "npm install --workspaces",
     "start:react": "cd react-app && npm start",
-    "start:vue": "cd vue-app && npm run dev", 
+    "start:vue": "cd vue-app && npm run dev",
+    "start:preact": "cd preact-app && npm run dev",
+    "start:angular": "cd angular-app && npm start",
     "build:all": "npm run build --workspaces"
   }
 }

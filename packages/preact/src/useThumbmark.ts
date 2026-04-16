@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'preact/hooks';
 import { ThumbmarkContext } from './ThumbmarkContext';
 import { UseThumbmarkResult } from './types';
 
