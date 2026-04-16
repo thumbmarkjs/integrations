@@ -69,10 +69,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     for (const test of this.tests) {
       this.wireUp(test);
-      const start = performance.now();
-      test.service.get().then(() => {
-        console.log(`${test.title} completed in ${(performance.now() - start).toFixed(0)}ms`);
-      });
     }
   }
 

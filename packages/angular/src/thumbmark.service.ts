@@ -32,6 +32,7 @@ export class ThumbmarkService {
         ? { ...config?.options, api_key: config.apiKey }
         : config?.options || {};
       this.thumbmarkInstance = new Thumbmark(options);
+      this.get();
     }
   }
 

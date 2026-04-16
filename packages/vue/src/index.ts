@@ -2,12 +2,12 @@ import { App, inject, onMounted, ref, type InjectionKey, type Ref } from 'vue'
 import { Thumbmark, type ThumbmarkResponse } from '@thumbmarkjs/thumbmarkjs'
 
 // Types
-interface ThumbmarkPluginOptions {
+export interface ThumbmarkPluginOptions {
   apiKey?: string
   options?: ConstructorParameters<typeof Thumbmark>[0]
 }
 
-interface UseThumbmarkResult {
+export interface UseThumbmarkResult {
   thumbmark: Ref<string | null>
   visitorId: Ref<string | null>
   components: Ref<ThumbmarkResponse['components'] | null>
