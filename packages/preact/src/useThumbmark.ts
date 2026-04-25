@@ -8,7 +8,8 @@ export const useThumbmark = (): UseThumbmarkResult => {
   const [visitorId, setVisitorId] = useState<string | null>(null);
   const [components, setComponents] = useState<UseThumbmarkResult['components']>(null);
   const [info, setInfo] = useState<UseThumbmarkResult['info']>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<UseThumbmarkResult['data']>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const generateThumbmark = useCallback(async () => {
@@ -27,6 +28,7 @@ export const useThumbmark = (): UseThumbmarkResult => {
 
     try {
       const result = await thumbmarkInstance.get();
+      setData(result);
       setThumbmark(result.thumbmark);
       setVisitorId(result.visitorId || null);
       setComponents(result.components || null);
@@ -53,6 +55,7 @@ export const useThumbmark = (): UseThumbmarkResult => {
     error,
     components,
     info,
+    data,
     reload,
   };
 };

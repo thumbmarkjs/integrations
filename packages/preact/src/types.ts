@@ -14,5 +14,12 @@ export interface UseThumbmarkResult {
   error: Error | null;
   components: ThumbmarkResponse['components'] | null;
   info: ThumbmarkResponse['info'] | null;
+  /**
+   * The full response returned by `Thumbmark.get()`. Useful when the
+   * consumer needs access to fields like `version`, `requestId`,
+   * `metadata`, or `error[]` that aren't exposed as top-level
+   * properties of the hook result.
+   */
+  data: ThumbmarkResponse | null;
   reload: () => Promise<void>;
 }
